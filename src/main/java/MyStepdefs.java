@@ -72,8 +72,33 @@ public class MyStepdefs {
         WebElement createButton = driver.findElement(By.id("createProduct"));
         Assert.assertNotNull(createButton);
         createButton.click();
+    }
+
+    @When("^I find field \"([^\"]*)\" and write into Coca-Cola$")
+    public void iFindFieldAndWriteIntoCocaCola(String arg0) {
+        WebElement inputName = driver.findElement(By.id("name"));
+        inputName.sendKeys("Coca-Cola");
+    }
+
+    @And("^I find field \"([^\"]*)\" and write into (\\d+)$")
+    public void iFindFieldAndWriteInto(String arg0, int arg1) {
+        WebElement inputPrice = driver.findElement(By.id("price"));
+        inputPrice.sendKeys("25");
+    }
+
+    @And("^I click buton \"([^\"]*)\"$")
+    public void iClickButon(String arg0) {
+        WebElement createButton = driver.findElement(By.id("createProduct"));
+        Assert.assertNotNull(createButton);
+        createButton.click();
 
     }
 
-
+    @And("^I see in table \"([^\"]*)\" with (\\d+) price$")
+    public void iSeeInTableWithPrice(String arg0, int arg1) {
+        WebElement productNameId = driver.findElement(By.id("Coca-Cola"));
+        WebElement productPriceId = driver.findElement(By.id("25"));
+        Assert.assertEquals(productNameId.getText(), arg0);
+        Assert.assertEquals(productPriceId.getText(), arg1);
+    }
 }
