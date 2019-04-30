@@ -1,4 +1,5 @@
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -60,4 +61,18 @@ public class MyStepdefs {
         Assert.assertNotNull(menuItem);
         menuItem.click();
     }
+
+    @Then("^I go to url \"([^\"]*)\"$")
+    public void iGoToUrl(String arg0) {
+        Assert.assertEquals(arg0, driver.getCurrentUrl());
+    }
+
+    @And("^Click \"([^\"]*)\" button$")
+    public void clickButton(String arg0) {
+        WebElement createButton = driver.findElement(By.id("createProduct"));
+        Assert.assertNotNull(createButton);
+        createButton.click();
+    }
+
+
 }
