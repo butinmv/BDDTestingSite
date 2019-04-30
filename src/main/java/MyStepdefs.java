@@ -45,6 +45,7 @@ public class MyStepdefs {
 
     @Then("^I go to local web site and check title \"([^\"]*)\" from url$")
     public void iGoToLocalWebSiteAndCheckTitleFromUrl(String arg0) {
+        System.out.printf(driver.getTitle());
         Assert.assertEquals(arg0, driver.getTitle());
     }
 
@@ -58,6 +59,5 @@ public class MyStepdefs {
         }
         Assert.assertNotNull(menuItem);
         menuItem.click();
-        setOff();
     }
 }
