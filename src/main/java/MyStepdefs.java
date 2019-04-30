@@ -5,9 +5,13 @@ import cucumber.api.java.en.When;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.util.List;
 
 
 public class MyStepdefs {
@@ -42,6 +46,18 @@ public class MyStepdefs {
     @Then("^I go to local web site and check title \"([^\"]*)\" from url$")
     public void iGoToLocalWebSiteAndCheckTitleFromUrl(String arg0) {
         Assert.assertEquals(arg0, driver.getTitle());
+    }
+
+    @When("^Click \"([^\"]*)\" menu button$")
+    public void clickMenuButton(String arg0) {
+        List<WebElement> links = driver.findElements(By.className("nav-link"));
+        WebElement menuItem = null;
+        for (WebElement link: links) {
+            if (link.getText().equals(arg0))
+                menuItem = link;
+        }
+        Assert.assertNotNull(menuItem);
+        menuItem.click();
         setOff();
     }
 }
