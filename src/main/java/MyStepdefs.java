@@ -96,9 +96,15 @@ public class MyStepdefs {
 
     @And("^I see in table \"([^\"]*)\" with (\\d+) price$")
     public void iSeeInTableWithPrice(String arg0, int arg1) {
-        WebElement productNameId = driver.findElement(By.id("Coca-Cola"));
-        WebElement productPriceId = driver.findElement(By.id("25"));
-        Assert.assertEquals(productNameId.getText(), arg0);
-        Assert.assertEquals(productPriceId.getText(), arg1);
+        List<WebElement> rows = driver.findElements(By.className("trProduct"));
+        boolean flag = false;
+        for (WebElement row: rows) {
+            String name = row.findElement(By.className("name")).getText();
+            String price = row.findElement(By.className("price")).getText();
+            if (name.equals(arg0) && price.equals(String.valueOf(arg1))) {
+                flag = true;
+            }
+        }
+        Assert.assertTrue(flag);
     }
 }
