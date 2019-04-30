@@ -98,13 +98,17 @@ public class MyStepdefs {
     public void iSeeInTableWithPrice(String arg0, int arg1) {
         List<WebElement> rows = driver.findElements(By.className("trProduct"));
         boolean flag = false;
+        WebElement deleteElement = null;
         for (WebElement row: rows) {
+            deleteElement = row;
             String name = row.findElement(By.className("name")).getText();
             String price = row.findElement(By.className("price")).getText();
             if (name.equals(arg0) && price.equals(String.valueOf(arg1))) {
                 flag = true;
             }
+
         }
         Assert.assertTrue(flag);
+        deleteElement.findElement(By.className("deleteProduct")).click();
     }
 }
