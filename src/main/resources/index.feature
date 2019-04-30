@@ -8,4 +8,4 @@ Feature: Work with menu
     Given I have Web Browser
     When I write url into browser "http://localhost:8080/"
     When Click "All Positions" menu button
-    Then I go to local web site and check title "All Positions | ComPos" from url
+    Then I go to local web site and check title "Products | ComPos" from url
