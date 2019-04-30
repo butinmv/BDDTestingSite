@@ -26,5 +26,5 @@ Feature: Work with menu
     When I find field "name" and write into Coca-Cola
     And I find field "price" and write into 25
     And I click buton "Create"
-    Then I go to url "http://localhost:8080/products/"
+    Then I go to url "http://localhost:8080/products"
     And I see in table "Coca-Cola" with 25 price
