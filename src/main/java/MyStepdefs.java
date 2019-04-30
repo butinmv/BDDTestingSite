@@ -72,6 +72,7 @@ public class MyStepdefs {
         WebElement createButton = driver.findElement(By.id("createProduct"));
         Assert.assertNotNull(createButton);
         createButton.click();
+
     }
 
 
