@@ -24,8 +24,8 @@ public class MyStepdefs {
         String pathToDriver = "/Users/maximbutin/Documents/Study/Testing/BDDSite/chromedriver";
         ChromeOptions options = new ChromeOptions();
         System.setProperty("webdriver.chrome.driver", pathToDriver);
-        options.addArguments("--headless");
-        driver = new ChromeDriver();
+        //options.addArguments("--headless");
+        driver = new ChromeDriver(options);
     }
 
     @AfterClass
@@ -46,7 +46,6 @@ public class MyStepdefs {
 
     @Then("^I go to local web site and check title \"([^\"]*)\" from url$")
     public void iGoToLocalWebSiteAndCheckTitleFromUrl(String arg0) {
-        System.out.printf(driver.getTitle());
         Assert.assertEquals(arg0, driver.getTitle());
     }
 
@@ -110,5 +109,10 @@ public class MyStepdefs {
         }
         Assert.assertTrue(flag);
         deleteElement.findElement(By.className("deleteProduct")).click();
+    }
+
+    @And("^Close Browser$")
+    public void closeBrowser() {
+        setOff();
     }
 }
